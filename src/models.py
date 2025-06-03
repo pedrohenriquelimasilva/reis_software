@@ -16,7 +16,7 @@ class TaskStatus(str, Enum):
 class User:
     __tablename__ = "user"
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), init=False, primary_key=True)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), init=False, primary_key=True, default=uuid.uuid4)
     name: Mapped[str] = mapped_column(nullable=False)
     email: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String, nullable=False)
@@ -27,7 +27,7 @@ class User:
 class Task:
     __tablename__ = "task"
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), init=False, primary_key=True)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), init=False, primary_key=True, default=uuid.uuid4)
     title: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=True)
     due_date: Mapped[date] = mapped_column(nullable=True)
