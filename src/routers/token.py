@@ -1,9 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, Request, Response
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import APIRouter, Depends, HTTPException
 from http import HTTPStatus
 
-from src.models import Task, User
-from src.schemas import UserPublicSchema, UserRequestSchema, TokenPublicSchema
+from src.schemas import UserPublicSchema, UserRequestSchema, TokenPublicSchema, TokenRequestSchema
 from src.database import get_session
 from src.handlers.user.user_handler import EmailDuplicationHandler
 from src.services.user_service import UserService
@@ -18,7 +16,6 @@ router = APIRouter(
 )
 
 Session_db = Annotated[Session, Depends(get_session)]
-oauth2Form = Annotated[OAuth2PasswordRequestForm, Depends()]
 
 @router.post(
   '/register', 
@@ -42,12 +39,12 @@ def creat_user(session: Session_db, data_of_new_user: UserRequestSchema):
   summary='Login com e-mail e senha',
   description='Autentica o usuário usando email e senha e retorna um access_token. O Token é retornado no corpo da resposta.'
 )
-def login(session: Session_db, form_data: oauth2Form):
+def login(session: Session_db, form_data: TokenRequestSchema):
   try: 
     auth_service = AuthService(session)
     
     access_token = auth_service.login(
-            form_data.username, form_data.password
+            form_data.email, form_data.password
     )
     
     return {

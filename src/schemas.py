@@ -13,4 +13,7 @@ class UserRequestSchema(BaseModel):
 class TokenPublicSchema(BaseModel):
     access_token: str
     token_type: str
-    
+
+class TokenRequestSchema(BaseModel):
+    email: EmailStr
+    password: str
