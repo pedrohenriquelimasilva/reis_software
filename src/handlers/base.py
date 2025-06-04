@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 
 class BaseHandler(ABC):
-    def __init__(self, next_handler=None):
+    def __init__(self, next_handler=None, id=None):
         self._next_handler = next_handler
+        self.id = id
 
     @abstractmethod
     def handle(self, request, session):

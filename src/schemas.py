@@ -31,7 +31,14 @@ class TaskRequestSchema(BaseModel):
     title: str
     description: Optional[str] = None
     due_date: Optional[datetime] = None
-    
-    
+
+class TaskPutRequestSchema(BaseModel):
+    status: Optional[TaskStatus] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    due_date: Optional[datetime] = None
 class TasksPublicShema(BaseModel):
     tasks: List[TaskPublicSchema]
+    
+class TaskDeletePublicSchema(BaseModel):
+    detail: str
