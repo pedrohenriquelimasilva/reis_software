@@ -3,6 +3,7 @@ from http import HTTPStatus
 from sqlalchemy.exc import ProgrammingError
 
 from sqlalchemy.orm import Session
+from sqlalchemy import select
 from src.schemas import TaskRequestSchema
 
 from src.models import User, Task, TaskStatus
@@ -15,10 +16,8 @@ class TaskService:
   def create_task(self, task_data: TaskRequestSchema, session: Session, user: User):
     try:
       # validação de usuario
-      print('antes do handler')
       if self.validation_handler:
         self.validation_handler.handle(user, session)
-      print('depois do handler')
 
       task = Task(
         title=task_data.title,
@@ -33,6 +32,29 @@ class TaskService:
       session.refresh(task)
       
       return task
+    except ProgrammingError as e:
+      raise HTTPException(
+                status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
+                detail=f"Erro no banco de dados: {str(e)}"
+            )
+    except Exception:
+        session.rollback()
+        raise HTTPException(
+            status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
+            detail="Erro inesperado ao criar Task"
+        )
+  
+  def get_all_task(self, session: Session, user: User):
+    try:
+      # validação de usuario
+      if self.validation_handler:
+        self.validation_handler.handle(user, session)
+
+      tasks = session.scalars(
+          select(Task)
+      ).all()
+      
+      return tasks
     except ProgrammingError as e:
       raise HTTPException(
                 status_code=HTTPStatus.INTERNAL_SERVER_ERROR,

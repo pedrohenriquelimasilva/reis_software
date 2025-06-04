@@ -30,7 +30,7 @@ class Task:
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), init=False, primary_key=True, default=uuid.uuid4)
     title: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=True)
-    due_date: Mapped[date] = mapped_column(nullable=True)
+    due_date: Mapped[datetime] = mapped_column(nullable=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey('user.id'), nullable=False)
     status: Mapped[TaskStatus] = mapped_column(SqlAlchemyEnum(TaskStatus, name='taskstatus'), nullable=False, default=TaskStatus.PENDING)
     createdAt: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
