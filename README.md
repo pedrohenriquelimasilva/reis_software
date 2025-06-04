@@ -1,14 +1,13 @@
 # Teste de estágio - Reis Softwares
 
 <p align="center">
-  <a href="#-projeto">Tecnologia escolhida</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologias Utilizadas</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#how-to-use">Setup do projeto e como executar</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#common-mistakes">Como testar</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  
-  <a href="#common-mistakes">Decisões técnicas</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#common-mistakes">Melhorias futuras</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#common-mistakes">Vídeo funcional da aplicação</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologia-escolhida">Tecnologia escolhida</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias-utilizadas">Tecnologias Utilizadas</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-setup-do-projeto-e-como-executar">Setup do projeto e como executar</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-testar">Como testar</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#decisões-técnicas">Decisões técnicas</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#melhorias-futuras">Melhorias futuras</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#vídeo-funcional-da-aplicação">Vídeo funcional da aplicação</a>
 </p>
 
 ## 💻 Tecnologia escolhida
