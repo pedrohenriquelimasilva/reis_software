@@ -17,7 +17,7 @@ from sqlalchemy.orm import Session
 
 
 pwd_context = PasswordHash.recommended()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 
 # ----- PASSWORD --------

@@ -15,7 +15,7 @@ class UserService:
     
   def create_user(self, user_data: UserRequestSchema, session: Session):
     try:
-      # validação de nome e email
+      # validação de email
       if self.validation_handler:
         self.validation_handler.handle(user_data, session)
       

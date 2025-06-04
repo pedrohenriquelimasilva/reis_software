@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from src.routers import token
+from src.routers import token, task
 
 app = FastAPI()
 
@@ -13,7 +13,4 @@ app.add_middleware(
 )
 
 app.include_router(token.router)
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+app.include_router(task.router)

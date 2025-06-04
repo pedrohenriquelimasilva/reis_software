@@ -1,5 +1,8 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from typing import Optional
+from src.models import TaskStatus
+import uuid
 
 class UserPublicSchema(BaseModel):
     name: str
@@ -17,3 +20,12 @@ class TokenPublicSchema(BaseModel):
 class TokenRequestSchema(BaseModel):
     email: EmailStr
     password: str
+class TaskPublicSchema(BaseModel):
+    id: uuid.UUID
+    title: str
+    description: Optional[str] = None
+
+class TaskRequestSchema(BaseModel):
+    title: str
+    description: Optional[str] = None
+    due_date: Optional[datetime] = None
