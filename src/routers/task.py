@@ -87,7 +87,6 @@ def filter_taks_by_status(
   service = TaskService()
   
   tasks = service.get_task_by_status(session=session, user=user, status=status.value)
-  print('cheguei')
   
   return {'tasks': tasks}
 

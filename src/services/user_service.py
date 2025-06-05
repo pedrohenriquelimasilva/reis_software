@@ -8,17 +8,19 @@ from src.schemas import UserRequestSchema
 from src.models import User
 
 from src.security import get_password_hash
-
+from src.utils.logger import log_time
 class UserService:
   def __init__(self, validation_handler=None):
     self.validation_handler = validation_handler
     
   def create_user(self, user_data: UserRequestSchema, session: Session):
     try:
-      # validação de email
+      # validação de 
+      log_time('Validation email user')
       if self.validation_handler:
         self.validation_handler.handle(user_data, session)
       
+      log_time('Config user')
       user = User(
         name=user_data.name,
         email=user_data.email,
@@ -28,6 +30,7 @@ class UserService:
       session.add(user)
       session.commit()
       session.refresh(user)
+      log_time('Create in db user')
       
       return user
     except ProgrammingError as e:
