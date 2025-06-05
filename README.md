@@ -91,7 +91,7 @@ docker-compose up --build
 alembic upgrade head
 ```
 
-8. Inicie a aplicação
+9. Inicie a aplicação
 
 ```
 task run
