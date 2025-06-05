@@ -72,7 +72,7 @@ pipx ensurepath
 ```
 cd folder
 
-poetry install
+poetry install --no-root
 
 poetry env activate
 ```
