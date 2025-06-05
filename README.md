@@ -85,7 +85,13 @@ poetry env activate
 docker-compose up --build
 ```
 
-8. Inicie a aplicação
+8. Após criar o container, crie as tabelas no banco
+
+```
+alembic upgrade head
+```
+
+9. Inicie a aplicação
 
 ```
 task run
