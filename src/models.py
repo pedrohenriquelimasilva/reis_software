@@ -33,5 +33,6 @@ class Task:
     due_date: Mapped[datetime] = mapped_column(nullable=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey('user.id'), nullable=False)
     status: Mapped[TaskStatus] = mapped_column(SqlAlchemyEnum(TaskStatus, name='taskstatus'), nullable=False, default=TaskStatus.PENDING)
+    is_inactive: Mapped[bool] = mapped_column(nullable=False, default=False)
     createdAt: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
     updatedAt: Mapped[datetime] = mapped_column(DateTime ,default=datetime.now(), onupdate=datetime.now())

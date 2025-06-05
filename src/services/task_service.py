@@ -50,7 +50,10 @@ class TaskService:
         self.validation_handler.handle(user, session)
 
       tasks = session.scalars(
-          select(Task).where(Task.user_id == user.id)
+          select(Task).where(
+            Task.user_id == user.id,
+            Task.is_inactive == False
+          )
       ).all()
       
       if not tasks:
@@ -76,7 +79,10 @@ class TaskService:
         self.validation_handler.handle(id,user, session)
 
       task = session.scalar(
-          select(Task).where(Task.id == id)
+          select(Task).where(
+            Task.id == id,
+            Task.is_inactive == False
+          )
       )
       
       return task
@@ -101,7 +107,8 @@ class TaskService:
       tasks = session.scalars(
           select(Task).where(
               Task.user_id == user.id,
-              Task.status == status
+              Task.status == status,
+              Task.is_inactive == False
           )
       ).all()
 
@@ -136,9 +143,10 @@ class TaskService:
                 status_code=HTTPStatus.NOT_FOUND,
                 detail="Task não encontrada"
             )
+      task.is_inactive = True
 
-      session.delete(task)
       session.commit()
+      session.refresh(task)
       
       return {"detail": "Task deletada com sucesso"}
     except ProgrammingError as e:
@@ -163,7 +171,8 @@ class TaskService:
       task = session.scalar(
         select(Task).where(
             Task.id == id,
-            Task.user_id == user.id
+            Task.user_id == user.id,
+            Task.is_inactive == False
         )
       )
       

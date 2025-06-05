@@ -10,7 +10,8 @@ class ValidateIDTaksHandler(BaseHandler):
             existing = session.scalar(
                 select(Task).where(
                     Task.id == id,
-                    Task.user_id == user.id
+                    Task.user_id == user.id,
+                    Task.is_inactive == False
                 )
             )
             
